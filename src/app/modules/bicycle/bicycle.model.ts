@@ -13,6 +13,7 @@ const bicycleSchema = new Schema<Ibicycle>({
   price: {
     type: Number,
     required: true,
+    min: [0, "Price must be a positive number or zero"], 
   },
   type: {
     type: String,
@@ -26,12 +27,13 @@ const bicycleSchema = new Schema<Ibicycle>({
   quantity: {
     type: Number,
     required: true,
+    min: [0, "Quantity must be a non-negative integer"],
   },
   inStock: {
     type: Boolean,
     default: true,
   },
-});
+}, {timestamps: true});
 
-const Bicycle = model<Ibicycle>('Bicycle', bicycleSchema, 'bicycle');
+const Bicycle = model<Ibicycle>('Bicycle', bicycleSchema);
 export default Bicycle;
