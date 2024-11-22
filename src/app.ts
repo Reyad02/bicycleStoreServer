@@ -6,8 +6,6 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-  console.log(a);
-
   res.send('Hello World!');
 });
 
