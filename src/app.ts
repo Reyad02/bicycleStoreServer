@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/v1/bicycle', bicycleRouter);
+app.use('/api', bicycleRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
