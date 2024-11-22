@@ -1,4 +1,4 @@
-interface Tbicycle {
+interface Ibicycle {
   name: string;
   brand: string;
   price: number;
@@ -8,4 +8,4 @@ interface Tbicycle {
   inStock: boolean;
 }
 
-export default Tbicycle;
+export default Ibicycle;

@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose';
-import Tbicycle from './bicycle.interface';
+import Ibicycle from './bicycle.interface';
 
-const bicycleSchema = new Schema<Tbicycle>({
+const bicycleSchema = new Schema<Ibicycle>({
   name: {
     type: String,
     required: true,
@@ -33,5 +33,5 @@ const bicycleSchema = new Schema<Tbicycle>({
   },
 });
 
-const Bicycle = model<Tbicycle>("Bicycle",bicycleSchema)
+const Bicycle = model<Ibicycle>('Bicycle', bicycleSchema, 'bicycle');
 export default Bicycle;
