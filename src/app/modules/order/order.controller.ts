@@ -29,7 +29,7 @@ const getTotalRevenue = async (req: Request, res: Response) => {
   try {
     const result = await orderService.totalRevenue();
     res.json({
-      message: 'Order created successfully',
+      message: 'Revenue calculated successfully',
       success: true,
       data: { totalRevenue: result[0].totalRevenue },
     });
