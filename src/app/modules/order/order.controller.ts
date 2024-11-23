@@ -12,7 +12,11 @@ const createOrder = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error: any) {
-    res.status(500).json({
+    let status = 500;
+    if (error.name === 'NotFoundError') {
+      status = 404;
+    }
+    res.status(status).json({
       message: error.name || 'Something Went Wrong, So Data Is Not Inserted',
       success: false,
       error,
