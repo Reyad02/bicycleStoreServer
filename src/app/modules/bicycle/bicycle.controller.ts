@@ -13,12 +13,21 @@ const createBicycle = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error: any) {
-    res.status(500).json({
-      message: error.name || 'Something Went Wrong, So Data Is Not Inserted',
-      success: false,
-      error,
-      stack: error.stack || 'No stack trace available',
-    });
+    if (error.name === 'ZodError') {
+      res.status(500).json({
+        message: 'Validation failed',
+        success: false,
+        error,
+        stack: error.stack || 'No stack trace available',
+      });
+    } else {
+      res.status(500).json({
+        message: error.name || 'Something Went Wrong, So Data Is Not Inserted',
+        success: false,
+        error,
+        stack: error.stack || 'No stack trace available',
+      });
+    }
   }
 };
 

@@ -6,11 +6,15 @@ const makeOrder = async (payload: Iorder) => {
   const bicycle = await Bicycle.findById(payload.product);
 
   if (!bicycle) {
-    throw new Error('Bicycle not found');
+    const error = new Error('Bicycle not found');
+    error.name = 'NotFoundError';
+    throw error;
   }
 
   if (bicycle.quantity < payload.quantity) {
-    throw new Error('Insufficient stock');
+    const error = new Error('Insufficient stock');
+    error.name = 'StockError';
+    throw error;
   }
 
   await Bicycle.findByIdAndUpdate(payload.product, {
