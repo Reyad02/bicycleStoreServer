@@ -33,7 +33,10 @@ const createBicycle = async (req: Request, res: Response) => {
 
 const getBicycles = async (req: Request, res: Response) => {
   try {
-    const result = await bicycleService.getBicycles();
+    const { searchTerm } = req.query;
+    const result = await bicycleService.getBicycles(
+      searchTerm as string | undefined,
+    );
     res.json({
       message: 'Bicycles retrieved successfully',
       success: true,
